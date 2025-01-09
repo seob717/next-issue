@@ -4,7 +4,7 @@ import { IdList } from '@/constants/id';
 export const maxDuration = 300;
 export const dynamicParams = true;
 
-export const generateStaticParams = async () => {
+export const generateStaticParams = () => {
   try {
     return IdList;
   } catch (err) {
