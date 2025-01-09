@@ -5,7 +5,7 @@ import {testParams} from "@/app/constants/test";
 export const maxDuration = 300;
 export const dynamicParams = true;
 
-export const generateStaticParams = async () => {
+export const generateStaticParams =  () => {
   try {
     return testParams
   } catch (error) {
@@ -15,7 +15,7 @@ export const generateStaticParams = async () => {
 };
 
 type Props = {
-  params:{id:string;title:string;}
+  params:{ id:string; title:string; }
 }
 
 const Page = ({params:{id,title}}:Props) => {
