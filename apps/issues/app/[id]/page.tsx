@@ -1,23 +1,25 @@
 import React from 'react';
 import { IdList } from '@/constants/id';
 
-export const maxDuration = 300;
 export const dynamicParams = true;
 
-export const generateStaticParams = async () => {
+type Props = {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export const generateStaticParams = () => {
   try {
-    return IdList;
+    return IdList.map(({ id }) => ({ id: id }));
   } catch (err) {
     console.log(err);
     return [];
   }
 };
 
-type Props = {
-  params: { id: string };
-};
+const Page = async ({ params }: Props) => {
+  const { id } = await params;
 
-const Page = ({ params: { id } }: Props) => {
   return (
     <div className={'p-16'}>
       <span>{id}</span>
