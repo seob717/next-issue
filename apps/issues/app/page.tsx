@@ -1,14 +1,19 @@
-import styles from "./page.module.css";
-import {testParams} from "@/app/constants/test";
-import Link from "next/link";
+import { IdList } from '@/constants/id';
+import Link from 'next/link';
 
-export default function Home() {
+const Page = () => {
   return (
-    <div className={styles.page}>
-      <span>build test</span>
-      {testParams.map(({id,title})=>{
-        return <Link href={`/${id}/${title}`}>{title}</Link>
+    <div style={{ padding: '40px' }}>
+      {IdList.map(({ id }) => {
+        return (
+          <div key={id}>
+            <Link href={`/${id}`}>{id}</Link>
+            <br />
+          </div>
+        );
       })}
     </div>
   );
-}
+};
+
+export default Page;
