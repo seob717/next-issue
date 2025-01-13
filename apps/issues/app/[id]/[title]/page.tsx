@@ -1,6 +1,7 @@
 import React from 'react';
 import { ClipList } from '@/constants/id';
 import { buildTitle } from '@/utils/buildTitle';
+import { notFound, redirect } from 'next/navigation';
 
 export const dynamicParams = true;
 
@@ -21,6 +22,12 @@ export const generateStaticParams = () => {
 
 const Page = async ({ params }: Props) => {
   const { id, title } = await params;
+
+  const currentTitle = ClipList.find((item) => item.id === id)?.title;
+  if (!currentTitle) notFound();
+  if (!title || title !== currentTitle) {
+    redirect(`/${id}/${buildTitle(currentTitle)}`);
+  }
 
   return (
     <div style={{ display: 'flex', gap: '16px', flexDirection: 'column', padding: '16px' }}>
