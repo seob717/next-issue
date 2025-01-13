@@ -24,12 +24,13 @@ const Page = async ({ params }: Props) => {
   const { id, title } = await params;
 
   const currentTitle = ClipList.find((item) => item.id === id)?.title;
+  console.log(currentTitle, '✅');
   if (!currentTitle) {
     // notFound();
     redirect('/');
   }
-  if (!title[0] || title[0] !== encodeURIComponent(buildTitle(currentTitle))) {
-    console.log(title[0], '💊');
+  if (!title?.[0] || title?.[0] !== encodeURIComponent(buildTitle(currentTitle))) {
+    console.log(title?.[0], '💊');
     // console.log(`/${id}/${buildTitle(currentTitle)}`);
     redirect(`/${id}/${encodeURIComponent(buildTitle(currentTitle))}`);
   }
