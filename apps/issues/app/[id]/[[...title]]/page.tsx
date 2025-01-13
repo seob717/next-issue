@@ -6,7 +6,7 @@ import { notFound, redirect } from 'next/navigation';
 export const dynamicParams = true;
 
 type Props = {
-  params: Promise<{ id: string; title: string }>;
+  params: Promise<{ id: string; title: string[] }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
@@ -25,8 +25,8 @@ const Page = async ({ params }: Props) => {
 
   const currentTitle = ClipList.find((item) => item.id === id)?.title;
   if (!currentTitle) notFound();
-  if (!title || title !== encodeURIComponent(buildTitle(currentTitle))) {
-    console.log(title, '💊');
+  if (!title[0] || title[0] !== encodeURIComponent(buildTitle(currentTitle))) {
+    console.log(title[0], '💊');
     // console.log(`/${id}/${buildTitle(currentTitle)}`);
     redirect(`/${id}/${encodeURIComponent(buildTitle(currentTitle))}`);
   }
