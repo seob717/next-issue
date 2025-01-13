@@ -7,7 +7,7 @@ const Page = () => {
       {IdList.map(({ id }) => {
         return (
           <div key={id}>
-            <Link href={`/${encodeURIComponent(id)}`}>{id}</Link>
+            <Link href={`/${id}`}>{id}</Link>
             <br />
           </div>
         );

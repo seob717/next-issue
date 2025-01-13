@@ -10,8 +10,8 @@ type Props = {
 
 export const generateStaticParams = () => {
   try {
-    //한글 고층 빌딩과 광안대교가 보이는 번잡한 항구 도시 부산의 저녁부터 밤까지의 풍경 cdn ascii
-    const result = IdList.map(({ id }) => ({ id: encodeURIComponent(id) }));
+    //한글 고층 빌딩과 광안대교가 보이는 번잡한 항구 도시 부산의 저녁부터 밤까지의 풍경 cdn  x-matched-path = '밤의 활기찬 도새 스카이라인 blob 깨진 모양의 text << rail header'
+    const result = IdList.map(({ id }) => ({ id: id }));
     console.log({ result });
     return result;
   } catch (err) {
