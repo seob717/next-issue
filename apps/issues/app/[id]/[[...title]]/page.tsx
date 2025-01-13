@@ -13,7 +13,7 @@ type Props = {
 export const generateStaticParams = () => {
   try {
     //한글 고층 빌딩과 광안대교가 보이는 번잡한 항구 도시 부산의 저녁부터 밤까지의 풍경 cdn  x-matched-path = '밤의 활기찬 도새 스카이라인 blob 깨진 모양의 text << rail header'
-    return ClipList.map(({ id, title }) => ({ id, title: buildTitle(title) }));
+    return ClipList.map(({ id, title }) => ({ id, title: [buildTitle(title)] }));
   } catch (err) {
     console.log(err);
     return [];
