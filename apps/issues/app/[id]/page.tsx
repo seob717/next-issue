@@ -10,7 +10,9 @@ type Props = {
 
 export const generateStaticParams = () => {
   try {
-    return IdList.map(({ id }) => ({ id: decodeURIComponent(id) }));
+    const result = IdList.map(({ id }) => ({ id: decodeURIComponent(id) }));
+    console.log({ result });
+    return result;
   } catch (err) {
     console.log(err);
     return [];
