@@ -25,7 +25,7 @@ const Page = async ({ params }: Props) => {
 
   const currentTitle = ClipList.find((item) => item.id === id)?.title;
   if (!currentTitle) notFound();
-  if (!title || title !== currentTitle) {
+  if (!title || title !== buildTitle(currentTitle)) {
     redirect(`/${id}/${buildTitle(currentTitle)}`);
   }
 
