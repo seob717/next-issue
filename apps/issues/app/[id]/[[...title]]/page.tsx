@@ -1,7 +1,7 @@
 import React from 'react';
 import { ClipList } from '@/constants/id';
 import { buildTitle } from '@/utils/buildTitle';
-import { notFound, redirect } from 'next/navigation';
+import { redirect } from 'next/navigation';
 
 export const dynamicParams = true;
 
@@ -24,7 +24,10 @@ const Page = async ({ params }: Props) => {
   const { id, title } = await params;
 
   const currentTitle = ClipList.find((item) => item.id === id)?.title;
-  if (!currentTitle) notFound();
+  if (!currentTitle) {
+    // notFound();
+    redirect('/');
+  }
   if (!title[0] || title[0] !== encodeURIComponent(buildTitle(currentTitle))) {
     console.log(title[0], '💊');
     // console.log(`/${id}/${buildTitle(currentTitle)}`);
